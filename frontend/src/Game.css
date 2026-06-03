@@ -1,0 +1,97 @@
+/* Full screen dark container to match the auth screen */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0f0f13;
+  color: white;
+  padding: 20px;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.game-header h2 {
+  color: #00ffcc;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.highlight {
+  color: #ff007f; /* Neon pink for the player name */
+  font-weight: bold;
+}
+
+/* THE MAGIC GRID */
+.board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px; /* Space between the cells */
+  background-color: #1e1e2f;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #33334d;
+  
+  /* Restrict max width so it doesn't get massively huge on desktop monitors */
+  width: 100%;
+  max-width: 450px; 
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+}
+
+/* Individual Grid Cells */
+.cell {
+  background-color: #0a0a0f;
+  aspect-ratio: 1 / 1; /* Forces the cell to always be a perfect square */
+  border-radius: 4px;
+  border: 1px solid #1e1e2f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover effect so players know exactly which cell they are targeting */
+.cell:hover {
+  background-color: #14141f;
+  border-color: #00ffcc;
+  box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.2);
+}
+
+/* Tiny numbers just for our testing right now */
+.cell-number {
+  color: #33334d;
+  font-size: 0.8rem;
+  font-weight: bold;
+  user-select: none;
+}
+
+/* THE ATOMS */
+.atom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.atom {
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: inset -2px -2px 6px rgba(0,0,0,0.5), 0 0 10px currentColor;
+}
+
+/* Different sizes based on how many atoms are in the cell */
+.atom-1 { width: 40%; height: 40%; }
+.atom-2 { width: 35%; height: 35%; }
+.atom-3 { width: 30%; height: 30%; }
+
+/* Player Colors */
+.player-1 { color: #ff007f; background-color: #ff007f; } /* Neon Pink */
+.player-2 { color: #00ffcc; background-color: #00ffcc; } /* Neon Cyan */
