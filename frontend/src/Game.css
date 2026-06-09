@@ -95,3 +95,117 @@
 /* Player Colors */
 .player-1 { color: #ff007f; background-color: #ff007f; } /* Neon Pink */
 .player-2 { color: #00ffcc; background-color: #00ffcc; } /* Neon Cyan */
+
+/* --- VICTORY OVERLAY --- */
+.victory-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 15, 19, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 50px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.victory-overlay h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0;
+  text-shadow: 0 0 20px currentColor;
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: translate(-50%, -40%) scale(0.8); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* --- MULTIPLAYER LOBBY STYLES --- */
+.player-list {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.player-row {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 1.1rem;
+}
+
+.player-row:last-child {
+  border-bottom: none;
+}
+
+.player-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 15px;
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* --- THE 4 PLAYER COLORS --- */
+/* Player 1: Neon Pink */
+.player-1 { color: #ff007f; background-color: #ff007f; } 
+.player-text-1 { color: #ff007f; text-shadow: 0 0 8px rgba(255, 0, 127, 0.5); }
+
+/* Player 2: Neon Cyan */
+.player-2 { color: #00ffcc; background-color: #00ffcc; } 
+.player-text-2 { color: #00ffcc; text-shadow: 0 0 8px rgba(0, 255, 204, 0.5); }
+
+/* Player 3: Neon Green */
+.player-3 { color: #39ff14; background-color: #39ff14; } 
+.player-text-3 { color: #39ff14; text-shadow: 0 0 8px rgba(57, 255, 20, 0.5); }
+
+/* Player 4: Neon Yellow */
+.player-4 { color: #fdf500; background-color: #fdf500; } 
+.player-text-4 { color: #fdf500; text-shadow: 0 0 8px rgba(253, 245, 0, 0.5); }
+
+/* --- SCOREBOARD STYLES --- */
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.score-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  border-top: 3px solid transparent; /* We will color this via React classes below */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.score-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Neon Borders for the top of the score cards */
+.player-border-1 { border-top-color: #ff007f; }
+.player-border-2 { border-top-color: #00ffcc; }
+.player-border-3 { border-top-color: #39ff14; }
+.player-border-4 { border-top-color: #fdf500; }
