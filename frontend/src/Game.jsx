@@ -3,9 +3,10 @@ import { motion } from 'framer-motion';
 import { io } from 'socket.io-client';
 import './Game.css';
 
-// 1. Connect to the backend server
-const socket = io('http://localhost:5000');
-
+// 1. Connect to the backend server dynamically
+// Vite uses import.meta.env to read cloud variables
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+const socket = io(BACKEND_URL);
 // --- THE 8-BIT SOUND ENGINE (FIXED) ---
 // Create the audio engine ONCE outside the function to prevent browser memory limits
 const AudioContext = window.AudioContext || window.webkitAudioContext;

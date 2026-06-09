@@ -17,7 +17,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "*", // We will lock this down to your specific Vercel URL later
         methods: ["GET", "POST"]
     }
 });
