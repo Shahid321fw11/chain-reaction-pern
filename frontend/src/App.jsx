@@ -18,7 +18,12 @@ function App() {
     
     // Change 'register' to 'signup' if your backend route is named differently
     const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register'; 
-    const url = `http://localhost:5000${endpoint}`;
+    // const url = `http://localhost:5000${endpoint}`;
+    
+// Grab the Vercel variable, but fall back to localhost for local testing
+const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+const url = `${backendUrl}${endpoint}`;
+
 
     try {
       const response = await axios.post(url, { email, password });
